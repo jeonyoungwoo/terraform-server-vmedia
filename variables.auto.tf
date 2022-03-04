@@ -14,14 +14,14 @@ variable "server_list" {
       object_type            = "compute.Blade",
       target_platform        = "FIAttached",
       vmedia_policy          = "IMM-Demo-Terraform-UCSX1",
-      boot_iso_file_location = "10.100.31.32/VMware-VMvisor-Installer-7.0U3c-19193900.x86_64.iso"
+      boot_iso_file_location = "10.100.23.190/exsi.iso"
     },
-    {
-      name                   = "UCSX-FI-1-2",
-      object_type            = "compute.Blade",
-      target_platform        = "FIAttached",
-      vmedia_policy          = "IMM-Demo-Terraform-UCSX2",
-      boot_iso_file_location = "10.100.31.32/VMware-VMvisor-Installer-7.0U3c-19193900.x86_64.iso"
+#    {
+#      name                   = "UCSX-FI-1-2",
+#     object_type            = "compute.Blade",
+#     target_platform        = "FIAttached",
+#     vmedia_policy          = "IMM-Demo-Terraform-UCSX2",
+#     boot_iso_file_location = "10.100.31.32/VMware-VMvisor-Installer-7.0U3c-19193900.x86_64.iso"
     }
   ]
 }
@@ -35,7 +35,7 @@ variable "organization" {
 variable "server_profile_action" {
   type        = string
   description = "Desired Action for the server profile (e.g., Deploy, Unassign)"
-  default     = "Deploy"    //Deploy  ->> No-op  >> Deploy
+  default     = "No-op"    //Deploy  ->> No-op  >> Deploy
 }
 
 variable "imc_access_policy" {
