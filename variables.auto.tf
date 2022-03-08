@@ -42,7 +42,7 @@ variable "server_profile_action" {
 variable "imc_access_policy" {
   type        = string
   description = "Name of IMC Access Policy to associate with the server profile"
-  default     = "IMM-Demo-Terraform"
+  default     = "IMC_test_ywjeon"
 }
 /* No use for in-band connectivity 
 variable "imc_access_vlan" {
