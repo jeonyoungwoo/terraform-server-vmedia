@@ -234,7 +234,7 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
   }
 }
 
-resource "intersight_00_00_if" "00" {
+resource "intersight_vnic_00_if" "00" {
   # skip this resource if the name isn't defined
   count = var.lan_connectivity_policy == null ? 0 : 1
   name  = var.vnic_name
@@ -283,6 +283,7 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
     allowed_vlans = var.cluster_vlan
     native_vlan   = var.cluster_vlan
   }
+}
 }
 /*
 resource "intersight_vnic_01_if" "01" {
