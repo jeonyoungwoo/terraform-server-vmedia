@@ -120,5 +120,10 @@ variable "cluster_vlan" {
 variable "vnic_name" {
   type        = string
   description = "VNIC Ethernet Interface name"
-  default     = "eth0"
+  default     = "00"
+}
+variable "vnic_name1" {
+  type        = string
+  description = "VNIC Ethernet Interface name"
+  default     = "01"
 }
