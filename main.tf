@@ -284,7 +284,7 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
     native_vlan   = var.cluster_vlan
   }
 }
-
+/*
 resource "intersight_vnic_01_if" "01" {
   # skip this resource if the name isn't defined
   count = var.lan_connectivity_policy == null ? 0 : 1
@@ -321,3 +321,4 @@ resource "intersight_vnic_01_if" "01" {
     moid = intersight_vnic_eth_qos_policy.ethernet_qos[count.index].id
   }
 }
+*/
