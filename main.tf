@@ -303,22 +303,22 @@ resource "intersight_vnic_01_if" "01" {
     */
     object_type = "macpool.Pool"
     selector    = "Name eq '${var.mac_pool}'"
-  }
-  lan_connectivity_policy {
-    moid        = intersight_vnic_lan_connectivity_policy.lan[count.index].id
-    object_type = "vnic.LanConnectivityPolicy"
-  }
-  fabric_eth_network_group_policy {
-    moid = intersight_fabric_eth_network_group_policy.network_group[count.index].id
-  }
-  fabric_eth_network_control_policy {
-    moid = intersight_fabric_eth_network_control_policy.network_control[count.index].id
-  }
-  eth_adapter_policy {
-    moid = intersight_vnic_eth_adapter_policy.ethernet_adapter[count.index].id
-  }
-  eth_qos_policy {
-    moid = intersight_vnic_eth_qos_policy.ethernet_qos[count.index].id
-  }
-}
-*/
+  #}
+  #lan_connectivity_policy {
+  #  moid        = intersight_vnic_lan_connectivity_policy.lan[count.index].id
+  #  object_type = "vnic.LanConnectivityPolicy"
+  #}
+  #fabric_eth_network_group_policy {
+  #  moid = intersight_fabric_eth_network_group_policy.network_group[count.index].id
+  #}
+  #fabric_eth_network_control_policy {
+  #  moid = intersight_fabric_eth_network_control_policy.network_control[count.index].id
+  #}
+  #eth_adapter_policy {
+  #  moid = intersight_vnic_eth_adapter_policy.ethernet_adapter[count.index].id
+  #}
+  #eth_qos_policy {
+  #  moid = intersight_vnic_eth_qos_policy.ethernet_qos[count.index].id
+  #}
+#}
+#
