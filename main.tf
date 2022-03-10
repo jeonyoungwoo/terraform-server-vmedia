@@ -284,5 +284,5 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
     native_vlan   = var.cluster_vlan
   }
 }
-}
+
 
