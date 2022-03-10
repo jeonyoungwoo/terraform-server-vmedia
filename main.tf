@@ -285,41 +285,4 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
   }
 }
 }
-/*
-resource "intersight_vnic_01_if" "01" {
-  # skip this resource if the name isn't defined
-  count = var.lan_connectivity_policy == null ? 0 : 1
-  name  = var.vnic_name
-  order = 1
-  placement {
-    id        = "MLOM"
-    pci_link  = 0
-    uplink    = 0
-    switch_id = "B"
-  }
-  failover_enabled = true
-  mac_pool {
-    /*
-    moid        = "5f35631f6962752d3125234c"
-    */
-#    object_type = "macpool.Pool"
-#    selector    = "Name eq '${var.mac_pool}'"
-  #}
-  #lan_connectivity_policy {
-  #  moid        = intersight_vnic_lan_connectivity_policy.lan[count.index].id
-  #  object_type = "vnic.LanConnectivityPolicy"
-  #}
-  #fabric_eth_network_group_policy {
-  #  moid = intersight_fabric_eth_network_group_policy.network_group[count.index].id
-  #}
-  #fabric_eth_network_control_policy {
-  #  moid = intersight_fabric_eth_network_control_policy.network_control[count.index].id
-  #}
-  #eth_adapter_policy {
-  #  moid = intersight_vnic_eth_adapter_policy.ethernet_adapter[count.index].id
-  #}
-  #eth_qos_policy {
-  #  moid = intersight_vnic_eth_qos_policy.ethernet_qos[count.index].id
-  #}
-#}
-#
+
