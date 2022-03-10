@@ -234,7 +234,7 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
   }
 }
 
-resource "intersight_00_eth_if" "00" {
+resource "intersight_00_00_if" "00" {
   # skip this resource if the name isn't defined
   count = var.lan_connectivity_policy == null ? 0 : 1
   name  = var.vnic_name
@@ -301,8 +301,8 @@ resource "intersight_vnic_01_if" "01" {
     /*
     moid        = "5f35631f6962752d3125234c"
     */
-    object_type = "macpool.Pool"
-    selector    = "Name eq '${var.mac_pool}'"
+#    object_type = "macpool.Pool"
+#    selector    = "Name eq '${var.mac_pool}'"
   #}
   #lan_connectivity_policy {
   #  moid        = intersight_vnic_lan_connectivity_policy.lan[count.index].id
