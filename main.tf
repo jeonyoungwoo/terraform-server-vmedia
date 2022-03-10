@@ -234,7 +234,7 @@ resource "intersight_fabric_eth_network_group_policy" "network_group" {
   }
 }
 
-resource "intersight_vnic_eth_if" "eth0" {
+resource "intersight_00_eth_if" "00" {
   # skip this resource if the name isn't defined
   count = var.lan_connectivity_policy == null ? 0 : 1
   name  = var.vnic_name
@@ -244,6 +244,57 @@ resource "intersight_vnic_eth_if" "eth0" {
     pci_link  = 0
     uplink    = 0
     switch_id = "A"
+  }
+  failover_enabled = true
+  mac_pool {
+    /*
+    moid        = "5f35631f6962752d3125234c"
+    */
+    object_type = "macpool.Pool"
+    selector    = "Name eq '${var.mac_pool}'"
+  }
+  lan_connectivity_policy {
+    moid        = intersight_vnic_lan_connectivity_policy.lan[count.index].id
+    object_type = "vnic.LanConnectivityPolicy"
+  }
+  fabric_eth_network_group_policy {
+    moid = intersight_fabric_eth_network_group_policy.network_group[count.index].id
+  }
+  fabric_eth_network_control_policy {
+    moid = intersight_fabric_eth_network_control_policy.network_control[count.index].id
+  }
+  eth_adapter_policy {
+    moid = intersight_vnic_eth_adapter_policy.ethernet_adapter[count.index].id
+  }
+  eth_qos_policy {
+    moid = intersight_vnic_eth_qos_policy.ethernet_qos[count.index].id
+  }
+}
+resource "intersight_fabric_eth_network_group_policy" "network_group" {
+  # skip this resource if the name isn't defined
+  count       = var.ethernet_network_group == null ? 0 : 1
+  name        = var.ethernet_network_group
+  description = "Terraform Module Cluster Network"
+  organization {
+    object_type = "organization.Organization"
+    moid        = data.intersight_organization_organization.organization_moid.id
+  }
+  vlan_settings {
+    allowed_vlans = var.cluster_vlan
+    native_vlan   = var.cluster_vlan
+  }
+}
+
+resource "intersight_vnic_01_if" "01" {
+  # skip this resource if the name isn't defined
+  count = var.lan_connectivity_policy == null ? 0 : 1
+  name  = var.vnic_name
+  order = 1
+  placement {
+    id        = "MLOM"
+    pci_link  = 0
+    uplink    = 0
+    switch_id = "B"
   }
   failover_enabled = true
   mac_pool {
