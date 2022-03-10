@@ -219,7 +219,7 @@ resource "intersight_vnic_eth_qos_policy" "ethernet_qos" {
   }
 }
 
-resource "intersight_fabric_eth_network_group_policy" "network_group" {
+resource "intersight_fabric_0_network_group_policy" "network_group" {
   # skip this resource if the name isn't defined
   count       = var.ethernet_network_group == null ? 0 : 1
   name        = var.ethernet_network_group
